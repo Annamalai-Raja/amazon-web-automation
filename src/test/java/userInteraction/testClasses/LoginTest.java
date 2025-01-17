@@ -7,7 +7,8 @@ public class LoginTest extends WebDriverInit {
 
     @Test
     public void loginTest(){
-       dashboardPO.closeLoginPopUp();
+       //dashboardPO.closeLoginPopUp();
+        dashboardPO.searchProduct("Laptop");
     }
 
 }

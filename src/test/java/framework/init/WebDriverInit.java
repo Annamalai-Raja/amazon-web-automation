@@ -27,7 +27,6 @@ public class WebDriverInit extends Generics implements Configuration{
              driver = new ChromeDriver();
           }
 
-
         openUrl(driver , URL );
         maximizeWindow(driver);
         implicitWait(driver , 10);
@@ -37,7 +36,7 @@ public class WebDriverInit extends Generics implements Configuration{
 
 
 
-    @AfterClass
+    @AfterMethod
     public void quitDriver(){
        deleteCookies(driver);
        quit(driver);

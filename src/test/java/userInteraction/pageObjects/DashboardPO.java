@@ -12,13 +12,20 @@ public class DashboardPO extends AbstractClass {
     @FindBy(xpath = "//span[text() ='✕']")
     public WebElement closeLoginBtn;
 
+    @FindBy(name = "q")
+    public WebElement searchTab;
+
     public DashboardPO(WebDriver driver) {
         super(driver);
-        this.dashboardPO = new DashboardPO(driver);
+        this.dashboardPO = this;
     }
 
 
     public void closeLoginPopUp(){
         clickByElement(driver , closeLoginBtn);
+    }
+
+    public void searchProduct(String input){
+        sendKeys( searchTab , input);
     }
 }
