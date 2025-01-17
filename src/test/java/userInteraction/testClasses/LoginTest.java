@@ -9,6 +9,7 @@ public class LoginTest extends WebDriverInit {
     public void loginTest(){
        //dashboardPO.closeLoginPopUp();
         dashboardPO.searchProduct("Laptop");
+        System.out.println(dashboardPO.totalSearchResults());
     }
 
 }
