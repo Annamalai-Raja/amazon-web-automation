@@ -15,6 +15,8 @@ public interface Configuration {
     String SELENIUM_HUB= getProperty("selenium-hub");
     String SELENIUM_PORT = getProperty("selenium-port");
 
+    String IS_GRID = getProperty("is_grid");
+
      static String getProperty(String key) {
          FileInputStream input = null;
          try {

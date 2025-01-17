@@ -3,8 +3,6 @@ package framework.init;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -22,7 +20,7 @@ public class Generics {
         driver.manage().window().maximize();
     }
 
-    public void clickByElement(WebElement element){
+    public void clickByElement(WebDriver driver, WebElement element){
         element.click();
     }
 
@@ -40,5 +38,12 @@ public class Generics {
         js_executor.executeScript("arguments[0].click();" , element);
     }
 
+    public void deleteCookies(WebDriver driver){
+        driver.manage().deleteAllCookies();
+    }
+
+    public void quit(WebDriver driver){
+        driver.quit();
+    }
 
 }
