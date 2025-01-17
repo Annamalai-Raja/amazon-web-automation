@@ -12,6 +12,7 @@ public interface Configuration {
 
     String URL = getProperty("url");
 
+
     String SELENIUM_HUB= getProperty("selenium-hub");
     String SELENIUM_PORT = getProperty("selenium-port");
 

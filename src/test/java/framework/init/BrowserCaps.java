@@ -27,7 +27,6 @@ public class BrowserCaps implements Configuration {
        System.out.println("Browser Version :"  + browserVersion);
 
        return caps;
-
     }
 
     static URL getGridUrl() {

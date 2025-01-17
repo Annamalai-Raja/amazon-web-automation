@@ -14,7 +14,6 @@ public class AbstractClass extends  WebDriverInit{
         this.driver = driver;
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, 10);
         PageFactory.initElements(finder , this);
-
     }
 
 }

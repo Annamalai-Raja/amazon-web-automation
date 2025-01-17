@@ -17,6 +17,7 @@ public class DashboardPO extends AbstractClass {
         this.dashboardPO = new DashboardPO(driver);
     }
 
+
     public void closeLoginPopUp(){
         clickByElement(driver , closeLoginBtn);
     }

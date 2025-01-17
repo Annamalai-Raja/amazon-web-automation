@@ -27,6 +27,7 @@ public class WebDriverInit extends Generics implements Configuration{
              driver = new ChromeDriver();
           }
 
+
         openUrl(driver , URL );
         maximizeWindow(driver);
         implicitWait(driver , 10);

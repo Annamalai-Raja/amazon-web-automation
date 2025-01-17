@@ -9,4 +9,5 @@ public class LoginTest extends WebDriverInit {
     public void loginTest(){
        dashboardPO.closeLoginPopUp();
     }
+
 }
