@@ -6,4 +6,102 @@
   <version>1.0-SNAPSHOT</version>
   <name>Archetype - demo_framework</name>
   <url>http://maven.apache.org</url>
+
+  <developers>
+    <developer>
+      <name>Annamalai Rajalingam</name>
+      <email>annamalairaja2903@gmail.com</email>
+    </developer>
+  </developers>
+
+  <description>This project is created by Annamalai raja for learning purpose</description>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.15.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.8.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>32.0.1-android</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.stephenc.monte</groupId>
+      <artifactId>monte-screen-recorder</artifactId>
+      <version>0.7.7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.zeroturnaround</groupId>
+      <artifactId>zt-zip</artifactId>
+      <version>1.15</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.16.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-csv</artifactId>
+      <version>1.11.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <suiteXmlFiles>
+            <suiteXmlFile>
+              ${project.basedir}/test-suites/main.xml
+            </suiteXmlFile>
+          </suiteXmlFiles>
+          <reportsDirectory>test-output</reportsDirectory>
+          <properties>
+            <property>
+              <name>usedefaultlisteners</name>
+              <value>true</value>
+            </property>
+            <property>
+              <name>reporter</name>
+              <value>listenReport.Reporter</value>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>14</source>
+          <target>14</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
