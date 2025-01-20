@@ -1,5 +1,7 @@
 package framework.init;
 
+import amazon_ui.pageObjects.CartPO;
+import amazon_ui.pageObjects.LoginPo;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import framework.utils.Configuration;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +21,8 @@ public class WebDriverInit extends Generics implements Configuration {
 
     public WebDriver driver;
     protected DashboardPO dashboardPO;
+    protected LoginPo loginPO;
+    protected CartPO cartPO;
 
     @BeforeSuite
     public void initReport(ITestContext context) {
@@ -40,7 +44,10 @@ public class WebDriverInit extends Generics implements Configuration {
             maximizeWindow(driver);
             implicitWait(driver, 10);
 
+            loginPO = new LoginPo(driver);
             dashboardPO = new DashboardPO(driver);
+            cartPO = new CartPO(driver);
+
         } catch (Exception e) {
             System.err.println("Error initializing WebDriver: " + e.getMessage());
             throw e;

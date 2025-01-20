@@ -17,8 +17,13 @@ public class SearchTest extends WebDriverInit {
         logger =  createTest("Searching Product : " + product);
         infoLog("Searching for :" + product);
         dashboardPO.searchProduct(product);
-        Assert.assertTrue(dashboardPO.isProductsDisplayed());
+        Assert.assertTrue(dashboardPO._isProductsDisplayed());
         dashboardPO.totalResultsFetched();
+        dashboardPO.clickAddToCart();
+        Assert.assertTrue(cartPO._isCartPageRedirected());
+        cartPO.addedCartItems();
+        cartPO.clickProceedPayment();
+        Assert.assertTrue(loginPO._isLoginPageRedirected());
     }
 
 }
