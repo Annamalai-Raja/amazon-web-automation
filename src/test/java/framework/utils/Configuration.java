@@ -8,15 +8,20 @@ import java.util.Properties;
 public interface Configuration {
 
       Properties properties = new Properties();
+
       String PROPERTIES_FILE_PATH = "resources/config.properties";
 
-    String URL = getProperty("url");
+      String URL = getProperty("url");
 
+      String SELENIUM_HUB= getProperty("selenium-hub");
 
-    String SELENIUM_HUB= getProperty("selenium-hub");
-    String SELENIUM_PORT = getProperty("selenium-port");
+      String SELENIUM_PORT = getProperty("selenium-port");
 
-    String IS_GRID = getProperty("is_grid");
+      String IS_GRID = getProperty("is-grid");
+
+      int IMPLICIT_WAIT = Integer.parseInt(getProperty("implicit-wait"));
+
+      int EXPLICIT_WAIT = Integer.parseInt(getProperty("explicit-wait"));
 
      static String getProperty(String key) {
          FileInputStream input = null;

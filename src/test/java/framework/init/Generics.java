@@ -1,22 +1,29 @@
 package framework.init;
 
+import framework.utils.Configuration;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Generics {
+public class Generics implements Configuration {
+
+    public static WebDriverWait WAIT;
 
     public void openUrl(WebDriver driver , String url){
         driver.get(url);
     }
 
-    public void implicitWait(WebDriver driver , int duration){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
+
+    public void implicitWait(WebDriver driver){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
     }
+
 
     public void maximizeWindow(WebDriver driver){
         driver.manage().window().maximize();
@@ -35,7 +42,6 @@ public class Generics {
     }
 
     public void clickByElementJS(WebDriver driver , WebElement element){
-
         JavascriptExecutor js_executor = (JavascriptExecutor) driver;
         js_executor.executeScript("arguments[0].click();" , element);
     }

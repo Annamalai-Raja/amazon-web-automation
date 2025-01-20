@@ -42,7 +42,7 @@ public class WebDriverInit extends Generics implements Configuration {
 
             openUrl(driver, URL);
             maximizeWindow(driver);
-            implicitWait(driver, 10);
+            implicitWait(driver);
 
             loginPO = new LoginPo(driver);
             dashboardPO = new DashboardPO(driver);
