@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Generics {
 
@@ -46,6 +48,16 @@ public class Generics {
         driver.quit();
     }
 
+    public String fetchNumbers(String input) {
+        Pattern pattern = Pattern.compile("over ([\\d,]+)");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1).replace(",", "");
+        } else {
+            return "0";
+        }
+    }
 
 
 }

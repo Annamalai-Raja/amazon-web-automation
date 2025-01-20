@@ -2,7 +2,6 @@ package framework.init;
 
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import framework.utils.Configuration;
-import framework.utils.TestLogger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -10,7 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import userInteraction.pageObjects.DashboardPO;
+import amazon_ui.pageObjects.DashboardPO;
 import static framework.utils.TestLogger.logger;
 
 import static framework.utils.ExtentInit.initializeReports;
@@ -26,7 +25,7 @@ public class WebDriverInit extends Generics implements Configuration {
         initializeReports(context.getCurrentXmlTest().getSuite().getName());
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void initDriver() {
         try {
             DesiredCapabilities caps = BrowserCaps.configureChrome();
@@ -63,7 +62,7 @@ public class WebDriverInit extends Generics implements Configuration {
             }
             deleteCookies(driver);
         } finally {
-            if (driver != null) {
+             {
                 quit(driver);
             }
         }
