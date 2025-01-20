@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class DashboardPO extends AbstractClass {
 
-
     @FindBy(xpath = "//span[text() ='✕']")
     public WebElement closeLoginBtn;
 

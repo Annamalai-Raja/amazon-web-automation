@@ -1,49 +1,79 @@
 package framework.init;
 
+import com.aventstack.extentreports.markuputils.ExtentColor;
 import framework.utils.Configuration;
+import framework.utils.TestLogger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import userInteraction.pageObjects.DashboardPO;
+import static framework.utils.TestLogger.logger;
 
-public class WebDriverInit extends Generics implements Configuration{
+import static framework.utils.ExtentInit.initializeReports;
+import static framework.utils.ExtentInit.quitReport;
+
+public class WebDriverInit extends Generics implements Configuration {
 
     public WebDriver driver;
-
     protected DashboardPO dashboardPO;
 
-
-    @BeforeClass
-    public void initDriver()  {
-        DesiredCapabilities caps = BrowserCaps.configureChrome();
-
-          if(Boolean.parseBoolean(IS_GRID)){
-              driver = new RemoteWebDriver(BrowserCaps.getGridUrl() , caps);
-          }
-         else{
-             driver = new ChromeDriver();
-          }
-
-        openUrl(driver , URL );
-        maximizeWindow(driver);
-        implicitWait(driver , 10);
-
-        dashboardPO = new DashboardPO(driver);
+    @BeforeSuite
+    public void initReport() {
+        initializeReports();
     }
 
+    @BeforeClass
+    public void initDriver() {
+        try {
+            DesiredCapabilities caps = BrowserCaps.configureChrome();
 
+            if (Boolean.parseBoolean(IS_GRID)) {
+                driver = new RemoteWebDriver(BrowserCaps.getGridUrl(), caps);
+            } else {
+                driver = new ChromeDriver();
+            }
+
+            openUrl(driver, URL);
+            maximizeWindow(driver);
+            implicitWait(driver, 10);
+
+            dashboardPO = new DashboardPO(driver);
+        } catch (Exception e) {
+            System.err.println("Error initializing WebDriver: " + e.getMessage());
+            throw e;
+        }
+    }
 
     @AfterMethod
-    public void quitDriver(){
-       deleteCookies(driver);
-       quit(driver);
+    public void quitDriver(ITestResult result) {
+        try {
+            if (result.getStatus() == ITestResult.SUCCESS) {
+                logger.pass(result.getName() + " - PASSED");
+            } else if (result.getStatus() == ITestResult.FAILURE) {
+                logger.fail(result.getName() + " - FAILED");
+                logger.fail("Reason: " + result.getThrowable());
+                logger.fail(String.valueOf(ExtentColor.RED));
+            } else if (result.getStatus() == ITestResult.SKIP) {
+                logger.skip(result.getName() + " - SKIPPED");
+                logger.skip(String.valueOf(ExtentColor.ORANGE));
+            }
+            deleteCookies(driver);
+        } finally {
+            if (driver != null) {
+                quit(driver);
+            }
+        }
     }
 
     @AfterSuite
-    public void exitReports(){
-
+    public void exitReports() {
+        try {
+            quitReport();
+        } catch (Exception e) {
+            System.err.println("Error finalizing reports: " + e.getMessage());
+        }
     }
 }
