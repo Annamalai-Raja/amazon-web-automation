@@ -5,15 +5,25 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import java.io.File;
+
 public class ExtentInit {
 
     static ExtentReports extent;
     static ExtentSparkReporter htmlReporter;
     public static ExtentTest logger;
 
-    public static ExtentReports initializeReports() {
+    public static ExtentReports initializeReports(String testName) {
+
+        String reportDirectory = System.getProperty("user.dir") + "/Reports_" + testName;
+
+        File directory = new File(reportDirectory);
+        if(!directory.exists()){
+            directory.mkdirs();
+        }
+
         try {
-            String reportPath = System.getProperty("user.dir") + "/target/ExtentReport.html";
+            String reportPath = reportDirectory + "/" + testName + ".html";
             htmlReporter = new ExtentSparkReporter(reportPath);
             extent = new ExtentReports();
             extent.attachReporter(htmlReporter);
@@ -39,5 +49,8 @@ public class ExtentInit {
             extent.flush();
         }
     }
+
+
+
 
 }
