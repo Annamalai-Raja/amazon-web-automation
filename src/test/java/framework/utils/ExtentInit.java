@@ -29,7 +29,7 @@ public class ExtentInit {
             extent.attachReporter(htmlReporter);
 
             htmlReporter.config().setDocumentTitle("Annamalai Report");
-            htmlReporter.config().setReportName("Flipkart Automation Report");
+            htmlReporter.config().setReportName("Amazon Automation Report");
             htmlReporter.config().setTheme(Theme.DARK);
 
             return extent;

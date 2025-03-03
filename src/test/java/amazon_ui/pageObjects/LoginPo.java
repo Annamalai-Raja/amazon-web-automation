@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static framework.utils.TestLogger.infoLog;
+import static framework.utils.TestLogger.testInfoLog;
 
 public class LoginPo extends AbstractClass {
 
@@ -22,7 +22,7 @@ public class LoginPo extends AbstractClass {
     }
 
     public boolean _isLoginPageRedirected(){
-        infoLog("After Clicking proceed payment login page Redirected");
+        testInfoLog("After Clicking proceed payment login page Redirected");
         new WebDriverWait(driver , Duration.ofSeconds(7)).until(ExpectedConditions.elementToBeClickable(userNameField));
         return userNameField.isDisplayed();
     }

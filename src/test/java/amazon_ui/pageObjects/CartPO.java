@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static framework.utils.TestLogger.infoLog;
+import static framework.utils.TestLogger.testInfoLog;
 
 public class CartPO extends AbstractClass {
 
@@ -30,15 +30,15 @@ public class CartPO extends AbstractClass {
         int itemsInCart = Integer.parseInt(cartItems.getText());
 
         if(itemsInCart>=1){
-            infoLog("Items Added in cart Successfully -" + itemsInCart);
+            testInfoLog("Items Added in cart Successfully -" + itemsInCart);
         }
         else {
-            infoLog("Items Not Added in cart");
+            testInfoLog("Items Not Added in cart");
         }
     }
 
     public void clickProceedPayment(){
-        infoLog("clicking payment button");
+        testInfoLog("clicking payment button");
         clickByElement(driver , proceedPaymentButton);
     }
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static framework.utils.TestLogger.infoLog;
+import static framework.utils.TestLogger.testInfoLog;
 
 public class DashboardPO extends AbstractClass {
 
@@ -32,9 +32,9 @@ public class DashboardPO extends AbstractClass {
     }
 
     public void searchProduct(String input){
-        infoLog("Searching for - " + input);
+        testInfoLog("Searching for - " + input);
         sendKeys( searchTab , input);
-        infoLog("Clicking Search button");
+        testInfoLog("Clicking Search button");
         clickByElement(driver , searchButton);
     }
 
@@ -44,11 +44,11 @@ public class DashboardPO extends AbstractClass {
 
     public void totalResultsFetched(){
         String result = totalResults.getText();
-        infoLog("Total Results found -" +  fetchNumbers(result));
+        testInfoLog("Total Results found -" +  fetchNumbers(result));
     }
 
     public void clickAddToCart(){
-        infoLog("Adding the First product to cart");
+        testInfoLog("Adding the First product to cart");
         clickByElement(driver , addCartButton.get(0));
         clickByElementJS(driver , cartButton);
     }

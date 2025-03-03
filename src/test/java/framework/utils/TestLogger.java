@@ -13,7 +13,7 @@ public class TestLogger extends ExtentInit {
         log("[DEBUG] - " + message);
     }
 
-    public static void infoLog(String message) {
+    public static void testInfoLog(String message) {
         if (logger != null) {
             logger.info(message);
         } else {

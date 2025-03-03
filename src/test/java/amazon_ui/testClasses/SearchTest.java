@@ -15,7 +15,7 @@ public class SearchTest extends WebDriverInit {
     @Test(dataProvider = "productSearch"  , dataProviderClass = searchData.class)
     public void searchTest(String product){
         logger =  createTest("Searching Product : " + product);
-        infoLog("Searching for :" + product);
+        testInfoLog("Searching for :" + product);
         dashboardPO.searchProduct(product);
         Assert.assertTrue(dashboardPO._isProductsDisplayed());
         dashboardPO.totalResultsFetched();
