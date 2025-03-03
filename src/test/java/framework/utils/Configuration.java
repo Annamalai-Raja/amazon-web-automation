@@ -23,6 +23,10 @@ public interface Configuration {
 
       int EXPLICIT_WAIT = Integer.parseInt(getProperty("explicit-wait"));
 
+      String IS_CLOUD = getProperty("is-cloud");
+
+      String BROWSER = getProperty("browser");
+
      static String getProperty(String key) {
          FileInputStream input = null;
          try {

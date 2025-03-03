@@ -4,6 +4,7 @@ import amazon_ui.pageObjects.CartPO;
 import amazon_ui.pageObjects.LoginPo;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import framework.utils.Configuration;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -30,13 +31,20 @@ public class WebDriverInit extends Generics implements Configuration {
     }
 
     @BeforeMethod
-    public void initDriver() {
+    public void initDriver(ITestContext context) {
         try {
-            DesiredCapabilities caps = BrowserCaps.configureChrome();
+            DesiredCapabilities caps ;
 
-            if (Boolean.parseBoolean(IS_GRID)) {
+            if (Boolean.parseBoolean(IS_CLOUD)) {
+                caps =BrowserCaps.configureCloudBrowser(context.getCurrentXmlTest().getSuite().getName());
+                driver = new RemoteWebDriver(BrowserCaps.getRemoteURl() , caps);
+            }
+            else if(Boolean.parseBoolean(IS_GRID))
+            {
+                caps = BrowserCaps.configureGridBrowser();
                 driver = new RemoteWebDriver(BrowserCaps.getGridUrl(), caps);
-            } else {
+            }
+            else {
                 driver = new ChromeDriver();
             }
 
@@ -56,7 +64,19 @@ public class WebDriverInit extends Generics implements Configuration {
 
     @AfterMethod
     public void quitDriver(ITestResult result) {
-        try {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        if(Boolean.parseBoolean(IS_CLOUD)){
+            if (result.getStatus() == ITestResult.SUCCESS){
+                js.executeScript( "lambda-status=passed");
+            } else if (result.getStatus() == ITestResult.FAILURE) {
+                js.executeScript("lambda-status=failed");
+            }
+            else {
+                js.executeScript("lambda-status=skipped");
+            }
+        }
+
+        else {
             if (result.getStatus() == ITestResult.SUCCESS) {
                 logger.pass(result.getName() + " - PASSED");
             } else if (result.getStatus() == ITestResult.FAILURE) {
@@ -66,11 +86,6 @@ public class WebDriverInit extends Generics implements Configuration {
             } else if (result.getStatus() == ITestResult.SKIP) {
                 logger.skip(result.getName() + " - SKIPPED");
                 logger.skip(String.valueOf(ExtentColor.ORANGE));
-            }
-            deleteCookies(driver);
-        } finally {
-             {
-                quit(driver);
             }
         }
     }
@@ -84,3 +99,8 @@ public class WebDriverInit extends Generics implements Configuration {
         }
     }
 }
+
+
+
+
+

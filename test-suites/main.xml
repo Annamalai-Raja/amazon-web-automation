@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Search Test" verbose="1">
+
+
+    <test name="Search Test">
+        <classes>
+            <class name="amazon_ui.testClasses.SearchTest"/>
+        </classes>
+    </test>
+
+
+</suite>

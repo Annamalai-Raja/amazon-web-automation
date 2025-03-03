@@ -50,7 +50,7 @@ public class DashboardPO extends AbstractClass {
     public void clickAddToCart(){
         infoLog("Adding the First product to cart");
         clickByElement(driver , addCartButton.get(0));
-        clickByElement(driver , cartButton);
+        clickByElementJS(driver , cartButton);
     }
 
 }

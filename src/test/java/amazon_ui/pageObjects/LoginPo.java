@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static framework.utils.TestLogger.infoLog;
 
@@ -20,7 +23,7 @@ public class LoginPo extends AbstractClass {
 
     public boolean _isLoginPageRedirected(){
         infoLog("After Clicking proceed payment login page Redirected");
-        WAIT.until(ExpectedConditions.elementToBeClickable(userNameField));
+        new WebDriverWait(driver , Duration.ofSeconds(7)).until(ExpectedConditions.elementToBeClickable(userNameField));
         return userNameField.isDisplayed();
     }
 }
