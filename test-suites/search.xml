@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Search_Suite" parallel="tests" >
+
+    <test name="Search Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.flipkart.ui.testClasses.demoTest"/>
+        </classes>
+    </test>
+
+</suite>

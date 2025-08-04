@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
-  <artifactId>demo_framework</artifactId>
+  <groupId>Automation</groupId>
+  <artifactId>Flipkart_Automation</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Archetype - demo_framework</name>
+  <name>Archetype - Flipkart Automation</name>
   <url>http://maven.apache.org</url>
 
   <developers>
@@ -14,15 +14,15 @@
     </developer>
   </developers>
 
-  <description>This project is created by Annamalai raja for learning purpose</description>
-
+  <description>This project is created by Annamalai Raja for learning purpose</description>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.27.0</version>
+      <version>4.34.0</version>
     </dependency>
 
     <dependency>
@@ -39,36 +39,24 @@
       <version>5.1.2</version>
     </dependency>
 
-
     <dependency>
       <groupId>com.github.javafaker</groupId>
       <artifactId>javafaker</artifactId>
       <version>1.0.2</version>
     </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>32.0.1-android</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.stephenc.monte</groupId>
-      <artifactId>monte-screen-recorder</artifactId>
-      <version>0.7.7.0</version>
-    </dependency>
+
+
     <dependency>
       <groupId>org.zeroturnaround</groupId>
       <artifactId>zt-zip</artifactId>
       <version>1.15</version>
     </dependency>
+
+
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.16.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-csv</artifactId>
-      <version>1.11.0</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.16</version>
     </dependency>
 
     <dependency>
@@ -76,12 +64,11 @@
       <artifactId>slf4j-api</artifactId>
       <version>2.0.16</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.5.16</version>
-      <scope>test</scope>
     </dependency>
 
   </dependencies>
@@ -113,8 +100,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <source>14</source>
-          <target>14</target>
+          <source>21</source>
+          <target>21</target>
         </configuration>
       </plugin>
     </plugins>
