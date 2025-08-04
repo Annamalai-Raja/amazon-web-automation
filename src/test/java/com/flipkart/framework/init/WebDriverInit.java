@@ -20,12 +20,11 @@ public class WebDriverInit {
         System.out.println("Initializing Reports");
     }
 
-
     @Parameters("browser")
     @BeforeMethod
     public void initDriver(String browser){
         System.out.println("Initializing Driver");
-         driver =  configureBrowser(browser);
+        driver = configureBrowser(browser);
         openUrl(APP_URL);
         demo = new demoPo(driver);
     }
