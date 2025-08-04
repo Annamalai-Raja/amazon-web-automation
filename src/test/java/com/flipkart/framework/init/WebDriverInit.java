@@ -13,6 +13,10 @@ public class WebDriverInit {
 
     public static WebDriver driver;
 
+    public static WebDriver getDriver(){
+        return driver;
+    }
+
     public demoPo demo;
 
     @BeforeSuite
