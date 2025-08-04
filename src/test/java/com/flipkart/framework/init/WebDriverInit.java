@@ -1,13 +1,13 @@
 package com.flipkart.framework.init;
 
-import com.flipkart.framework.utils.BrowserActions;
 import com.flipkart.ui.pageObjects.demoPo;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
+import static com.flipkart.framework.init.BrowserCaps.configureBrowser;
+import static com.flipkart.framework.utils.BrowserActions.closeBrowser;
 import static com.flipkart.framework.utils.BrowserActions.openUrl;
-import static com.flipkart.framework.utils.Configurations.APP_URL;
+import static com.flipkart.framework.utils.ConfigManager.APP_URL;
 
 public class WebDriverInit {
 
@@ -25,7 +25,7 @@ public class WebDriverInit {
     @BeforeMethod
     public void initDriver(String browser){
         System.out.println("Initializing Driver");
-        BrowserCaps.configureBrowser(browser);
+         driver =  configureBrowser(browser);
         openUrl(APP_URL);
         demo = new demoPo(driver);
     }
@@ -33,6 +33,7 @@ public class WebDriverInit {
     @AfterMethod
     public void quitDriver(){
         System.out.println("Closing Driver");
+        closeBrowser();
     }
 
     @AfterSuite

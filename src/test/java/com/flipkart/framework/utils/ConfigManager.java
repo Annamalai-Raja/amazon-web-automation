@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public interface Configurations {
+public interface ConfigManager {
 
     String APP_URL = getProperty("url");
 

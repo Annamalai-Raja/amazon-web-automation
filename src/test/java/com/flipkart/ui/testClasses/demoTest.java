@@ -7,6 +7,7 @@ public class demoTest extends WebDriverInit {
 
     @Test
     public void sample(){
-        System.out.println("Test Running");
+        System.out.println("Test Running :" + driver.getTitle());
+        driver.getTitle();
     }
 }
