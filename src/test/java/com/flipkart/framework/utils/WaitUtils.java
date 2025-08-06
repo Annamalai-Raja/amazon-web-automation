@@ -15,13 +15,13 @@ import static com.flipkart.framework.init.WebDriverInit.driver;
 
 public class WaitUtils {
 
-    WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
+    public static WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
 
     public void implicitlyWaitOf(int time){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
     }
 
-    public void waitForVisibility(WebElement element){
+    public static void waitForVisibility(WebElement element){
          wait.until(ExpectedConditions.visibilityOf(element));
     }
 
