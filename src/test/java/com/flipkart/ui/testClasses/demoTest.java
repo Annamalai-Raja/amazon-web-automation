@@ -9,5 +9,8 @@ public class demoTest extends WebDriverInit {
     public void sample(){
         System.out.println("Test Running :" + driver.getTitle());
         driver.getTitle();
+        demo.closeLoginDialog();
+        demo.searchProduct("Watches");
+        demo.getTotalResult();
     }
 }

@@ -8,6 +8,15 @@ public interface ConfigManager {
 
     String APP_URL = getProperty("url");
 
+    String BS_USERNAME = getProperty("browserstack.username");
+
+    String BS_Password = getProperty("browserstack.accesskey");
+
+    String BS_HUB_URL = getProperty("browserstack.hub.url");
+
+    boolean IS_CLOUD = Boolean.parseBoolean(getProperty("is.cloud"));
+
+    String EXECUTION_MODE = getProperty("execution.mode");
 
       static String getProperty(String key) {
           Properties properties = new Properties();
