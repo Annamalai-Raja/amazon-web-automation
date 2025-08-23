@@ -1,7 +1,8 @@
 package com.flipkart.framework.init;
 
-import com.flipkart.ui.pageObjects.demoPo;
+import com.flipkart.ui.pageObjects.SearchPo;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import static com.flipkart.framework.init.BrowserCaps.configureBrowser;
@@ -17,11 +18,13 @@ public class WebDriverInit {
         return driver;
     }
 
-    public demoPo demo;
+    public SearchPo searchPo;
 
     @BeforeSuite
-    public void initReports(){
+    public void initReports(ITestContext context){
         System.out.println("Initializing Reports");
+        String suiteName = context.getSuite().getName();
+        ReportInit.initReport(suiteName);
     }
 
     @Parameters("browser")
@@ -30,7 +33,7 @@ public class WebDriverInit {
         System.out.println("Initializing Driver");
         driver = configureBrowser(browser);
         openUrl(APP_URL);
-        demo = new demoPo(driver);
+        searchPo = new SearchPo(driver);
     }
 
     @AfterMethod
@@ -42,5 +45,6 @@ public class WebDriverInit {
     @AfterSuite
     public void flushReports(){
         System.out.println("Flushing Reports");
+        ReportInit.exitReport();
     }
 }
