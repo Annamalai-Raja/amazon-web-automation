@@ -18,6 +18,8 @@ public interface ConfigManager {
 
     String EXECUTION_MODE = getProperty("execution.mode");
 
+    String USER_DIR = System.getProperty("user.dir");
+
       static String getProperty(String key) {
           Properties properties = new Properties();
           try {
